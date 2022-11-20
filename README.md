@@ -2,6 +2,13 @@
 
 > Elaborate server side credentials with no brief
 
+## Routes
+
+- User route:
+  - POST - `/user/sign-up`
+  - POST - `/user/sign-in`
+  - PATCH - `/user/reset-password`
+
 ## Technologies
 
 - Node.js
@@ -19,7 +26,7 @@
 
 # Deployment link
 
-- SSR link: 
+- SSR link:
 - Repo link: https://github.com/hasibulislam999/e-commerce-ssr.git
 
 # Contributors
