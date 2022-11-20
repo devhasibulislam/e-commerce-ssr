@@ -1,5 +1,9 @@
 {
-  "cSpell.words": ["Hasibul"],
+  "cSpell.words": [
+    "cloudinary",
+    "Hasib",
+    "Hasibul"
+  ],
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
