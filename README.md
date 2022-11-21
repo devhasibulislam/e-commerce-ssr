@@ -26,8 +26,15 @@
 
 # Deployment link
 
-- SSR link:
+## Backend
+
+- SSR link: https://e-commerce-ssr.onrender.com
 - Repo link: https://github.com/hasibulislam999/e-commerce-ssr.git
+
+## Frontend
+
+- CSR link: https://e-commerce-csr.vercel.app
+-  https://github.com/hasibulislam999/e-commerce-csr
 
 # Contributors
 
