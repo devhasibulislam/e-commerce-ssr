@@ -104,6 +104,7 @@ const userSchema = new mongoose.Schema(
     },
 
     shippingAddress: String,
+    dateOfBirth: Date,
 
     // for user account confirmation token
     confirmationToken: String,
