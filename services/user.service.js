@@ -7,8 +7,10 @@ const emailConfirmationUtility = require("../utilities/emailConfirmation.utility
 
 /* find by email utility */
 async function findByEmail(email, filter) {
-  return await User.findOne({ email }).select(
-    filter ? "name email avatar phone role status" : ""
+  return await User.findOne({ email: email }).select(
+    filter
+      ? "name email avatar phone role status shippingAddress dateOfBirth"
+      : ""
   );
 }
 
@@ -21,6 +23,11 @@ function confirmByEmail(email, token, protocol, host, slug) {
 function isExpire(date) {
   const expired = new Date() > new Date(date);
   return expired;
+}
+
+/* remove image from cloudinary */
+async function removeAvatar(imageID) {
+  await cloudinary.uploader.destroy(imageID);
 }
 
 /* sign up an user */
@@ -138,18 +145,23 @@ exports.removeAnUser = async (id) => {
   }
 
   const imgID = user.avatar.name;
-  await cloudinary.uploader.destroy(imgID);
+  // await cloudinary.uploader.destroy(imgID);
+  await removeAvatar(imgID);
 
   const result = await User.findByIdAndDelete(id);
   return result;
 };
 
 exports.cloudinaryUpdate = async (filename) => {
-  await cloudinary.uploader.destroy(filename);
+  await removeAvatar(filename);
 };
 
 exports.updateUser = async (email, data) => {
-  const result = await User.findOneAndUpdate({ email: email }, { $set: data });
+  const result = await User.findOneAndUpdate({ email: email }, data, {
+    upsert: true,
+    runValidators: false,
+  });
+  // result.save({ validateBeforeSave: false });
   return result;
 };
 
