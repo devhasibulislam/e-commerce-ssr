@@ -1,6 +1,6 @@
 # Server Side Rendering
 
-> Elaborate server side credentials with no brief
+> An electronic commerce or internet commerce which refers to the buying and selling of goods or services using the internet, and the transfer of money and data to execute these transactions throughout multi-vendor.
 
 ## Routes
 
@@ -34,7 +34,7 @@
 ## Frontend
 
 - CSR link: https://e-commerce-csr.vercel.app
--  https://github.com/hasibulislam999/e-commerce-csr
+- Repo link: https://github.com/hasibulislam999/e-commerce-csr
 
 # Contributors
 
