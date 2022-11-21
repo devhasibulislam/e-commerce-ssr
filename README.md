@@ -34,7 +34,7 @@
 ## Frontend
 
 - CSR link: https://e-commerce-csr.vercel.app
--  https://github.com/hasibulislam999/e-commerce-csr
+- Repo link: https://github.com/hasibulislam999/e-commerce-csr
 
 # Contributors
 
