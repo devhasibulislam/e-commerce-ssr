@@ -161,7 +161,6 @@ exports.updateUser = async (email, data) => {
     upsert: true,
     runValidators: false,
   });
-  // result.save({ validateBeforeSave: false });
   return result;
 };
 
