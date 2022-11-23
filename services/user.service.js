@@ -135,7 +135,6 @@ exports.confirmPasswordReset = async (token) => {
 /* remove a user account */
 exports.removeAnUser = async (id) => {
   const user = await User.findById(id);
-  console.log(user);
 
   if (!user) {
     return { acknowledgement: false };
