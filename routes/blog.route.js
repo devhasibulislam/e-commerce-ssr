@@ -7,10 +7,10 @@
 
 /* external import */
 const express = require("express");
-const uploader = require("../middlewares/cloudinaryUpload.middleware");
 
-/* internal import */
+/* internal imports */
 const blogController = require("../controllers/blog.controller");
+const uploader = require("../middlewares/cloudinaryUpload.middleware");
 
 /* router level connection */
 const router = express.Router();
