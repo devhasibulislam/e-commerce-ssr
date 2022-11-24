@@ -5,8 +5,9 @@
  * Date: 24/11/2022
  */
 
-/* external import */
+/* external imports */
 const mongoose = require("mongoose");
+const validator = require("validator");
 
 /* create review schema */
 const reviewSchema = new mongoose.Schema(
@@ -18,7 +19,10 @@ const reviewSchema = new mongoose.Schema(
     designation: String,
 
     // for user avatar
-    avatar: String,
+    avatar: {
+      type: String,
+      validate: [validator.isURL, "Please provide a valid avatar URL"],
+    },
 
     // for review description
     description: {
@@ -27,6 +31,16 @@ const reviewSchema = new mongoose.Schema(
       trim: true,
       minLength: [50, "Your blog name must be at least 50 characters"],
       maxLength: [300, "Your blog name must be at least 250 characters"],
+    },
+
+    // for review time stamps
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+    updatedAt: {
+      type: Date,
+      default: Date.now,
     },
   },
   { timestamps: true }
