@@ -96,11 +96,10 @@ const userSchema = new mongoose.Schema(
     /**
      * active: verified account
      * inactive: not verified account
-     * blocked: account disabled
      */
     status: {
       type: String,
-      enum: ["active", "inactive", "blocked"],
+      enum: ["active", "inactive"],
       default: "inactive",
     },
 
