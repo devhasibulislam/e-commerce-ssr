@@ -62,8 +62,9 @@ const userSchema = new mongoose.Schema(
 
     // for user avatar
     avatar: {
-      path: {
+      url: {
         type: String,
+        validate: [validator.isURL, "Please provide a valid avatar URL"],
         default:
           "https://i.pinimg.com/564x/ff/a0/9a/ffa09aec412db3f54deadf1b3781de2a.jpg",
       },
