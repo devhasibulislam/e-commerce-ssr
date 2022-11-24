@@ -18,6 +18,7 @@ const consoleMessage = require("./utilities/consoleMessage.utility");
 /* router level imports */
 const userRoute = require("./routes/user.route");
 const blogRoute = require("./routes/blog.route");
+const reviewRoute = require("./routes/review.route");
 
 /* application level connections */
 const app = express();
@@ -29,6 +30,7 @@ app.use(express.json());
 /* router level connections */
 app.use("/user", userRoute);
 app.use("/blog", blogRoute);
+app.use("/review", reviewRoute);
 
 /* global error handlers */
 app.use(errorHandlerMiddleware);
