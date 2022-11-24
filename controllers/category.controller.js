@@ -5,9 +5,8 @@
  * Date: 24/11/2022
  */
 
-const categoryService = require("../services/category.service");
-
 /* internal import */
+const categoryService = require("../services/category.service");
 
 /* insert new category */
 exports.insertNewCategory = async (req, res, next) => {
