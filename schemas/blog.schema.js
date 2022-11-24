@@ -5,8 +5,9 @@
  * Date: 24/11/2022
  */
 
-/* external import */
+/* external imports */
 const mongoose = require("mongoose");
+const validator = require("validator");
 
 /* create blog schema */
 const blogSchema = new mongoose.Schema(
@@ -28,6 +29,7 @@ const blogSchema = new mongoose.Schema(
     thumbnail: {
       url: {
         type: String,
+        validate: [validator.isURL, "Please provide a valid thumbnail URL"],
         default:
           "https://www.shutterstock.com/shutterstock/photos/381746308/display_1500/stock-photo-blog-blogging-homepage-social-media-network-concept-381746308.jpg",
       },
@@ -54,7 +56,7 @@ const blogSchema = new mongoose.Schema(
       default: 0,
     },
 
-    // for user account time stamps
+    // for blog time stamps
     createdAt: {
       type: Date,
       default: Date.now,
