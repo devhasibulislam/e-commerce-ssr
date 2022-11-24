@@ -7,6 +7,7 @@
 
 /* external imports */
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema.Types;
 const validator = require("validator");
 
 /* create category schema */
@@ -28,8 +29,8 @@ const categorySchema = new mongoose.Schema(
       type: String,
       required: [true, "Please, provide category description"],
       trim: true,
-      minLength: [10, "Category name must be at least 5 characters"],
-      maxLength: [250, "Category name would be at most 50 characters"],
+      minLength: [10, "Category description must be at least 5 characters"],
+      maxLength: [250, "Category description would be at most 50 characters"],
     },
 
     // for thumbnail
@@ -41,6 +42,14 @@ const categorySchema = new mongoose.Schema(
       },
       name: String,
     },
+
+    // for products
+    products: [
+      {
+        type: ObjectId,
+        ref: "Product",
+      },
+    ],
 
     // for category  time stamps
     createdAt: {
