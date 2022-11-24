@@ -9,7 +9,7 @@ exports.insertNewReview = async (data) => {
 
 /* display all reviews */
 exports.displayAllReviews = async ({ page }) => {
-  const contentLimit = 3;
+  const contentLimit = process.env.CONTENT_LIMIT;
   const result = await Review.find()
     .skip((Number(page) - 1) * contentLimit)
     .limit(page && contentLimit);
