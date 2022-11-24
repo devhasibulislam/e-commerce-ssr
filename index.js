@@ -20,6 +20,7 @@ const userRoute = require("./routes/user.route");
 const blogRoute = require("./routes/blog.route");
 const reviewRoute = require("./routes/review.route");
 const categoryRoute = require("./routes/category.route");
+const brandRoute = require("./routes/brand.route");
 
 /* application level connections */
 const app = express();
@@ -33,6 +34,7 @@ app.use("/user", userRoute);
 app.use("/blog", blogRoute);
 app.use("/review", reviewRoute);
 app.use("/category", categoryRoute);
+app.use("/brand", brandRoute);
 
 /* global error handlers */
 app.use(errorHandlerMiddleware);
