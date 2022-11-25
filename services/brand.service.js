@@ -22,7 +22,7 @@ exports.displaySpecificBrand = async ({ id }) => {
   return result;
 };
 
-/* update specific category */
+/* update specific brand */
 exports.updateSpecificBrand = async (id, data) => {
   const result = await Brand.updateOne(
     { _id: id },
@@ -32,7 +32,7 @@ exports.updateSpecificBrand = async (id, data) => {
   return result;
 };
 
-/* remove specific category */
+/* remove specific brand */
 exports.removeSpecificBrand = async ({ id }) => {
   const result = await Brand.findByIdAndDelete(id);
   return result;

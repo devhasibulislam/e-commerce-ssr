@@ -76,7 +76,7 @@ exports.updateSpecificBrand = async (req, res, next) => {
   }
 };
 
-/* remove specific category */
+/* remove specific brand */
 exports.removeSpecificBrand = async (req, res, next) => {
   try {
     const result = await brandService.removeSpecificBrand(req.params);
