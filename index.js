@@ -23,6 +23,7 @@ const categoryRoute = require("./routes/category.route");
 const brandRoute = require("./routes/brand.route");
 const supplierRoute = require("./routes/supplier.route");
 const storeRoute = require("./routes/store.route");
+const stockRoute = require("./routes/stock.route");
 
 /* application level connections */
 const app = express();
@@ -39,6 +40,7 @@ app.use("/category", categoryRoute);
 app.use("/brand", brandRoute);
 app.use("/supplier", supplierRoute);
 app.use("/store", storeRoute);
+app.use("/stock", stockRoute);
 
 /* global error handlers */
 app.use(errorHandlerMiddleware);
