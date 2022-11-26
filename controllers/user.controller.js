@@ -27,7 +27,7 @@ exports.cloudinaryUpload = async (req, res, next) => {
 
 exports.cloudinaryUpdate = async (req, res, next) => {
   try {
-    await userService.cloudinaryUpdate(req.query.filename);
+    await userService.cloudinaryUpdate(req.query.public_id);
     const result = req.file;
 
     res.status(202).json({

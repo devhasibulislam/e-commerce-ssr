@@ -41,7 +41,7 @@ const productSchema = new mongoose.Schema(
           default:
             "https://v2software.com/sites/default/files/field/image/services/products.jpg",
         },
-        name: String,
+        public_id: String,
       },
     ],
 

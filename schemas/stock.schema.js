@@ -51,7 +51,7 @@ const stockSchema = new mongoose.Schema(
         default:
           "https://play-lh.googleusercontent.com/MQKcmGIPw8KxbzMKNMKj0jSygnHPxeScDUaI75dkXYdD0415w6BdM-1WBSplTNe1TKw",
       },
-      name: String,
+      public_id: String,
     },
 
     // for price

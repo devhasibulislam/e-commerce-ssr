@@ -33,7 +33,7 @@ const blogSchema = new mongoose.Schema(
         default:
           "https://www.shutterstock.com/shutterstock/photos/381746308/display_1500/stock-photo-blog-blogging-homepage-social-media-network-concept-381746308.jpg",
       },
-      name: String,
+      public_id: String,
     },
 
     // for blog description

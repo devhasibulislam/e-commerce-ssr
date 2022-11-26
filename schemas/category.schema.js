@@ -40,7 +40,7 @@ const categorySchema = new mongoose.Schema(
         validate: [validator.isURL, "Please provide a valid thumbnail URL"],
         default: "https://flatsome.xyz/wp-content/uploads/2022/06/category.jpg",
       },
-      name: String,
+      public_id: String,
     },
 
     // for products

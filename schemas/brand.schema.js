@@ -57,7 +57,7 @@ const brandSchema = new mongoose.Schema(
         default:
           "https://www.lucidadvertising.com/wp-content/uploads/2020/07/Brand_Dev-1.jpg",
       },
-      name: String,
+      public_id: String,
     },
 
     // for location
