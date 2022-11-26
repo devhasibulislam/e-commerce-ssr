@@ -9,38 +9,6 @@
 const userService = require("../services/user.service");
 const jwtTokenUtility = require("../utilities/jwtToken.utility");
 
-/* upload an user avatar */
-exports.cloudinaryUpload = async (req, res, next) => {
-  try {
-    const result = req.file;
-
-    res.status(201).json({
-      acknowledgement: true,
-      message: "Created",
-      description: "Uploading complete to Cloudinary",
-      data: result,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-exports.cloudinaryUpdate = async (req, res, next) => {
-  try {
-    await userService.cloudinaryUpdate(req.query.public_id);
-    const result = req.file;
-
-    res.status(202).json({
-      acknowledgement: true,
-      message: "Accepted",
-      description: "Updating complete to Cloudinary",
-      data: result,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
 /* sign up an user */
 exports.signUpAnUser = async (req, res, next) => {
   try {
