@@ -39,7 +39,7 @@ const stockSchema = new mongoose.Schema(
       lowercase: true,
       enum: {
         values: ["kg", "litre", "pcs", "bag"],
-        message: "stock unit {VALUE} is not correct",
+        message: "Stock unit {VALUE} is not correct",
       },
     },
 
