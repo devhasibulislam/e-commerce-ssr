@@ -13,6 +13,7 @@ const userController = require("../controllers/user.controller");
 const verifyTokenMiddleware = require("../middlewares/verifyToken.middleware");
 const authorizeRoleMiddleware = require("../middlewares/authorizeRole.middleware");
 const uploader = require("../middlewares/cloudinaryUpload.middleware");
+const imageController = require("../controllers/image.controller");
 
 /* router level connection */
 const router = express.Router();
@@ -21,8 +22,8 @@ const router = express.Router();
 // upload user avatar
 router
   .route("/avatar")
-  .post(uploader.single("avatar"), userController.cloudinaryUpload)
-  .patch(uploader.single("avatar"), userController.cloudinaryUpdate);
+  .post(uploader.single("avatar"), imageController.cloudinaryUpload)
+  .patch(uploader.single("avatar"), imageController.cloudinaryUpdate);
 
 // sign up an user with confirmation
 router
