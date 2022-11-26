@@ -1,9 +1,7 @@
-/* external import */
-const cloudinary = require("cloudinary");
-
 /* internal imports */
 const User = require("../schemas/user.schema");
 const emailConfirmationUtility = require("../utilities/emailConfirmation.utility");
+const removeImageUtility = require("../utilities/removeImage.utility");
 
 /* find by email utility */
 async function findByEmail(email, filter) {
@@ -23,11 +21,6 @@ function confirmByEmail(email, token, protocol, host, slug) {
 function isExpire(date) {
   const expired = new Date() > new Date(date);
   return expired;
-}
-
-/* remove image from cloudinary */
-async function removeAvatar(imageID) {
-  await cloudinary.uploader.destroy(imageID);
 }
 
 /* sign up an user */
@@ -145,16 +138,16 @@ exports.removeAnUser = async (id) => {
   }
 
   if (user.avatar.name) {
-    const imgID = user.avatar.name;
-    await removeAvatar(imgID);
+    const public_id = user.avatar.name;
+    await removeImageUtility(public_id);
   }
 
   const result = await User.findByIdAndDelete(id);
   return result;
 };
 
-exports.cloudinaryUpdate = async (filename) => {
-  await removeAvatar(filename);
+exports.cloudinaryUpdate = async (public_id) => {
+  await removeImageUtility(public_id);
 };
 
 exports.updateUser = async (email, data) => {
