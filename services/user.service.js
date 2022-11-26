@@ -137,17 +137,13 @@ exports.removeAnUser = async (id) => {
     return { invalidRole: true };
   }
 
-  if (user.avatar.name) {
-    const public_id = user.avatar.name;
+  if (user.avatar.public_id) {
+    const public_id = user.avatar.public_id;
     await removeImageUtility(public_id);
   }
 
   const result = await User.findByIdAndDelete(id);
   return result;
-};
-
-exports.cloudinaryUpdate = async (public_id) => {
-  await removeImageUtility(public_id);
 };
 
 exports.updateUser = async (email, data) => {
