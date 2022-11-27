@@ -8,39 +8,6 @@
 /* internal import */
 const blogService = require("../services/blog.service");
 
-/* upload a blog thumbnail */
-exports.blogThumbnailUpload = (req, res, next) => {
-  try {
-    const result = req.file;
-
-    res.status(201).json({
-      acknowledgement: true,
-      message: "Created",
-      description: "Blog thumbnail uploaded successfully",
-      data: result,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-/* update a blog thumbnail */
-exports.blogThumbnailUpdate = async (req, res, next) => {
-  try {
-    await blogService.blogThumbnailUpdate(req.query.filename);
-    const result = req.file;
-
-    res.status(202).json({
-      acknowledgement: true,
-      message: "Accepted",
-      description: "Blog thumbnail updated successfully",
-      data: result,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
 /* insert a new blog */
 exports.insertNewBlog = async (req, res, next) => {
   try {
