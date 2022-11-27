@@ -10,6 +10,7 @@ const express = require("express");
 
 /* internal imports */
 const blogController = require("../controllers/blog.controller");
+const imageController = require("../controllers/image.controller");
 const uploader = require("../middlewares/cloudinaryUpload.middleware");
 
 /* router level connection */
@@ -19,8 +20,8 @@ const router = express.Router();
 // upload & update blog thumbnail
 router
   .route("/thumbnail")
-  .post(uploader.single("thumbnail"), blogController.blogThumbnailUpload)
-  .patch(uploader.single("thumbnail"), blogController.blogThumbnailUpdate);
+  .post(uploader.single("thumbnail"), imageController.cloudinaryUpload)
+  .patch(uploader.single("thumbnail"), imageController.cloudinaryUpdate);
 
 // post and get a blog
 router

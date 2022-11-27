@@ -10,11 +10,19 @@ const express = require("express");
 
 /* internal imports */
 const categoryController = require("../controllers/category.controller");
+const imageController = require("../controllers/image.controller");
+const uploader = require("../middlewares/cloudinaryUpload.middleware");
 
 /* router level imports */
 const router = express.Router();
 
 /* router method integration */
+// upload & update blog thumbnail
+router
+  .route("/thumbnail")
+  .post(uploader.single("thumbnail"), imageController.cloudinaryUpload)
+  .patch(uploader.single("thumbnail"), imageController.cloudinaryUpdate);
+
 router
   .route("/")
   .post(categoryController.insertNewCategory)

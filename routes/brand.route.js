@@ -10,11 +10,19 @@ const express = require("express");
 
 /* internal import */
 const brandController = require("../controllers/brand.controller");
+const imageController = require("../controllers/image.controller");
+const uploader = require("../middlewares/cloudinaryUpload.middleware");
 
 /* router level connection */
 const router = express.Router();
 
 /* router method integration */
+// upload & update blog thumbnail
+router
+  .route("/thumbnail")
+  .post(uploader.single("thumbnail"), imageController.cloudinaryUpload)
+  .patch(uploader.single("thumbnail"), imageController.cloudinaryUpdate);
+
 router
   .route("/")
   .post(brandController.insertNewBrand)

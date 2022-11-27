@@ -10,11 +10,19 @@ const express = require("express");
 
 /* internal import */
 const supplierController = require("../controllers/supplier.controller");
+const imageController = require("../controllers/image.controller");
+const uploader = require("../middlewares/cloudinaryUpload.middleware");
 
 /* router level connection */
 const router = express.Router();
 
 /* router method integration */
+// upload user avatar
+router
+  .route("/avatar")
+  .post(uploader.single("avatar"), imageController.cloudinaryUpload)
+  .patch(uploader.single("avatar"), imageController.cloudinaryUpdate);
+
 router
   .route("/")
   .post(supplierController.insertNewSupplier)
