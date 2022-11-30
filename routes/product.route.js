@@ -10,11 +10,19 @@ const express = require("express");
 
 /* internal import */
 const productController = require("../controllers/product.controller");
+const imageController = require("../controllers/image.controller");
+const uploader = require("../middlewares/cloudinaryUpload.middleware");
 
 /* router level import */
 const router = express.Router();
 
 /* router method integration */
+// upload product thumbnails
+router
+  .route("/thumbnails")
+  .post(uploader.array("thumbnails", 5), imageController.cloudinaryUpload)
+  .patch(uploader.array("thumbnails", 5), imageController.cloudinaryUpdate);
+
 router
   .route("/")
   .post(productController.insertNewProduct)
