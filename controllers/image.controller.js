@@ -4,7 +4,7 @@ const removeCloudinaryImage = require("../services/image.service");
 /* upload an image */
 const cloudinaryUpload = async (req, res, next) => {
   try {
-    const result = req.file;
+    const result = req.file || req.files;
 
     res.status(201).json({
       acknowledgement: true,
