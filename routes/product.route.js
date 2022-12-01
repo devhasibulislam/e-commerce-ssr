@@ -12,6 +12,8 @@ const express = require("express");
 const productController = require("../controllers/product.controller");
 const imageController = require("../controllers/image.controller");
 const uploader = require("../middlewares/cloudinaryUpload.middleware");
+const verifyTokenMiddleware = require("../middlewares/verifyToken.middleware");
+const authorizeRoleMiddleware = require("../middlewares/authorizeRole.middleware");
 
 /* router level import */
 const router = express.Router();
@@ -25,14 +27,22 @@ router
 
 router
   .route("/")
-  .post(productController.insertNewProduct)
+  .post(
+    verifyTokenMiddleware,
+    authorizeRoleMiddleware("admin", "seller"),
+    productController.insertNewProduct
+  )
   .get(productController.displayAllProducts);
 
 router
   .route("/:id")
   .get(productController.displaySpecificProduct)
   .patch(productController.updateSpecificProduct)
-  .delete(productController.removeSpecificProduct);
+  .delete(
+    verifyTokenMiddleware,
+    authorizeRoleMiddleware("admin", "seller"),
+    productController.removeSpecificProduct
+  );
 
 /* export product router */
 module.exports = router;
