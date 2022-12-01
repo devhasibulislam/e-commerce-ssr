@@ -1,5 +1,6 @@
 /* internal import */
 const Brand = require("../schemas/brand.schema");
+const removeImageUtility = require("../utilities/removeImage.utility");
 
 /* insert new brand */
 exports.insertNewBrand = async (data) => {
@@ -35,5 +36,11 @@ exports.updateSpecificBrand = async (id, data) => {
 /* remove specific brand */
 exports.removeSpecificBrand = async ({ id }) => {
   const result = await Brand.findByIdAndDelete(id);
+
+  if (result.logo.public_id) {
+    const public_id = result.logo.public_id;
+    await removeImageUtility(public_id);
+  }
+
   return result;
 };
