@@ -1,5 +1,6 @@
 /* internal import */
 const Product = require("../schemas/product.schema");
+const removeImageUtility = require("../utilities/removeImage.utility");
 
 /* insert new product */
 exports.insertNewProduct = async (data) => {
@@ -12,7 +13,17 @@ exports.displayAllProducts = async ({ page }) => {
   const contentLimit = process.env.CONTENT_LIMIT;
   const result = await Product.find()
     .skip((Number(page) - 1) * contentLimit)
-    .limit(page && contentLimit);
+    .limit(page && contentLimit)
+    .populate([
+      {
+        path: "category",
+        select: "thumbnail title -_id",
+      },
+      {
+        path: "brand",
+        select: "thumbnail title -_id",
+      },
+    ]);
   return result;
 };
 
@@ -43,6 +54,10 @@ exports.updateSpecificProduct = async (id, data) => {
 
 /* remove specific product */
 exports.removeSpecificProduct = async ({ id }) => {
+  const product = await Product.findById(id);
+  for (let i = 0; i < product.thumbnails.length; i++)
+    await removeImageUtility(product.thumbnails[i].public_id);
+
   const result = await Product.findByIdAndDelete(id);
   return result;
 };
