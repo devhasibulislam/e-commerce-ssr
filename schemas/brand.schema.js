@@ -20,7 +20,7 @@ const brandSchema = new mongoose.Schema(
       trim: true,
       uppercase: true,
       unique: [true, "Same brand already exists"],
-      minLength: [5, "Brand name must be at least 5 characters"],
+      minLength: [3, "Brand name must be at least 5 characters"],
       maxLength: [50, "Brand name would be at most 50 characters"],
     },
 
@@ -46,14 +46,14 @@ const brandSchema = new mongoose.Schema(
       required: [true, "Please, provide brand description"],
       trim: true,
       minLength: [10, "Brand description must be at least 5 characters"],
-      maxLength: [250, "Brand description would be at most 50 characters"],
+      maxLength: [250, "Brand description would be at most 250 characters"],
     },
 
-    // for thumbnail
-    thumbnail: {
+    // for logo
+    logo: {
       url: {
         type: String,
-        validate: [validator.isURL, "Please provide a valid thumbnail URL"],
+        validate: [validator.isURL, "Please provide a valid logo URL"],
         default:
           "https://www.lucidadvertising.com/wp-content/uploads/2020/07/Brand_Dev-1.jpg",
       },
