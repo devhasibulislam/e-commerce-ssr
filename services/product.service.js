@@ -21,7 +21,7 @@ exports.displayAllProducts = async ({ page }) => {
       },
       {
         path: "brand",
-        select: "thumbnail title _id",
+        select: "logo title _id",
       },
     ]);
   return result;
@@ -36,7 +36,7 @@ exports.displaySpecificProduct = async ({ id }) => {
     },
     {
       path: "brand",
-      select: "thumbnail title _id",
+      select: "logo title _id",
     },
   ]);
   return result;
