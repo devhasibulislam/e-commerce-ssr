@@ -11,7 +11,9 @@ const express = require("express");
 /* internal imports */
 const categoryController = require("../controllers/category.controller");
 const imageController = require("../controllers/image.controller");
+const authorizeRoleMiddleware = require("../middlewares/authorizeRole.middleware");
 const uploader = require("../middlewares/cloudinaryUpload.middleware");
+const verifyTokenMiddleware = require("../middlewares/verifyToken.middleware");
 
 /* router level imports */
 const router = express.Router();
@@ -25,14 +27,26 @@ router
 
 router
   .route("/")
-  .post(categoryController.insertNewCategory)
+  .post(
+    verifyTokenMiddleware,
+    authorizeRoleMiddleware("admin", "seller"),
+    categoryController.insertNewCategory
+  )
   .get(categoryController.displayAllCategories);
 
 router
   .route("/:id")
   .get(categoryController.displaySpecificCategory)
-  .patch(categoryController.updateSpecificCategory)
-  .delete(categoryController.removeSpecificCategory);
+  .patch(
+    verifyTokenMiddleware,
+    authorizeRoleMiddleware("admin", "seller"),
+    categoryController.updateSpecificCategory
+  )
+  .delete(
+    verifyTokenMiddleware,
+    authorizeRoleMiddleware("admin", "seller"),
+    categoryController.removeSpecificCategory
+  );
 
 /* export review router */
 module.exports = router;
