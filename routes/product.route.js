@@ -37,7 +37,11 @@ router
 router
   .route("/:id")
   .get(productController.displaySpecificProduct)
-  .patch(productController.updateSpecificProduct)
+  .patch(
+    verifyTokenMiddleware,
+    authorizeRoleMiddleware("admin", "seller"),
+    productController.updateSpecificProduct
+  )
   .delete(
     verifyTokenMiddleware,
     authorizeRoleMiddleware("admin", "seller"),
