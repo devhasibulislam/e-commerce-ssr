@@ -12,16 +12,16 @@ exports.insertNewProduct = async (data) => {
 exports.displayAllProducts = async ({ page }) => {
   const contentLimit = process.env.CONTENT_LIMIT;
   const result = await Product.find()
-    .skip(page && ((Number(page) - 1) * contentLimit))
+    .skip(page && (Number(page) - 1) * contentLimit)
     .limit(page && contentLimit)
     .populate([
       {
         path: "category",
-        select: "thumbnail title -_id",
+        select: "thumbnail title _id",
       },
       {
         path: "brand",
-        select: "thumbnail title -_id",
+        select: "thumbnail title _id",
       },
     ]);
   return result;
@@ -32,11 +32,11 @@ exports.displaySpecificProduct = async ({ id }) => {
   const result = await Product.findById(id).populate([
     {
       path: "category",
-      select: "thumbnail title -_id",
+      select: "thumbnail title _id",
     },
     {
       path: "brand",
-      select: "thumbnail title -_id",
+      select: "thumbnail title _id",
     },
   ]);
   return result;
@@ -44,6 +44,12 @@ exports.displaySpecificProduct = async ({ id }) => {
 
 /* update specific product */
 exports.updateSpecificProduct = async (id, data) => {
+  const product = await Product.findById(id);
+
+  if (product.thumbnails.length !== data.thumbnails.length)
+    for (let i = 0; i < product.thumbnails.length; i++)
+      await removeImageUtility(product.thumbnails[i].public_id);
+
   const result = await Product.updateOne(
     { _id: id },
     { $set: data },
