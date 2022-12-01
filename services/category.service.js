@@ -1,5 +1,6 @@
 /* internal import */
 const Category = require("../schemas/category.schema");
+const removeImageUtility = require("../utilities/removeImage.utility");
 
 /* insert new category */
 exports.insertNewCategory = async (data) => {
@@ -35,5 +36,11 @@ exports.updateSpecificCategory = async (id, data) => {
 /* remove specific category */
 exports.removeSpecificCategory = async ({ id }) => {
   const result = await Category.findByIdAndDelete(id);
+
+  if (result.thumbnail.public_id) {
+    const public_id = result.thumbnail.public_id;
+    await removeImageUtility(public_id);
+  }
+
   return result;
 };
