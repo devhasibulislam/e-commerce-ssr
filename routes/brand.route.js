@@ -17,11 +17,11 @@ const uploader = require("../middlewares/cloudinaryUpload.middleware");
 const router = express.Router();
 
 /* router method integration */
-// upload & update blog thumbnail
+// upload & update blog logo
 router
-  .route("/thumbnail")
-  .post(uploader.single("thumbnail"), imageController.cloudinaryUpload)
-  .patch(uploader.single("thumbnail"), imageController.cloudinaryUpdate);
+  .route("/logo")
+  .post(uploader.single("logo"), imageController.cloudinaryUpload)
+  .patch(uploader.single("logo"), imageController.cloudinaryUpdate);
 
 router
   .route("/")
