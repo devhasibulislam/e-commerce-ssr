@@ -142,6 +142,22 @@ exports.displayAllUsers = async (req, res, next) => {
   }
 };
 
+// fetch all query users
+exports.queryUsers = async (req, res, next) => {
+  try {
+    const result = await userService.queryUsers(req.query);
+
+    res.status(200).json({
+      acknowledgement: true,
+      message: "OK",
+      description: "Successfully fetching all query users",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 /* reset password */
 exports.forgotPassword = async (req, res, next) => {
   try {
