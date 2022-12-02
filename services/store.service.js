@@ -11,8 +11,12 @@ exports.insertNewStore = async (data) => {
 exports.displayAllStore = async ({ page }) => {
   const contentLimit = process.env.CONTENT_LIMIT;
   const result = await Store.find()
-    .skip((Number(page) - 1) * contentLimit)
-    .limit(page && contentLimit);
+    .skip(page && (Number(page) - 1) * contentLimit)
+    .limit(page && contentLimit)
+    .populate({
+      path: "sellers",
+      select: "avatar name role _id",
+    });
   return result;
 };
 
