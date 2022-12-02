@@ -45,6 +45,14 @@ router.get(
   userController.displayAllUsers
 );
 
+// fetch all query users
+router.get(
+  "/query-users",
+  verifyTokenMiddleware,
+  authorizeRoleMiddleware("admin", "buyer", "seller", "supplier", "deliverer"),
+  userController.queryUsers
+);
+
 // reset password
 router
   .route("/reset-password")
