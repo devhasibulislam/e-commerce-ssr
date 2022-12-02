@@ -1,5 +1,6 @@
 /* internal import */
 const Stock = require("../schemas/stock.schema");
+const removeImageUtility = require("../utilities/removeImage.utility");
 
 /* insert new stock */
 exports.insertNewStock = async (data) => {
@@ -52,5 +53,11 @@ exports.updateSpecificStock = async (id, data) => {
 /* remove specific stock */
 exports.removeSpecificStock = async ({ id }) => {
   const result = await Stock.findByIdAndDelete(id);
+
+  if (result.thumbnail.public_id) {
+    const public_id = result.thumbnail.public_id;
+    await removeImageUtility(public_id);
+  }
+
   return result;
 };
