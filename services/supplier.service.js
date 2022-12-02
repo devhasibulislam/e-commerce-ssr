@@ -20,7 +20,7 @@ exports.displayAllSupplier = async ({ page }) => {
 exports.displaySpecificSupplier = async ({ id }) => {
   const result = await Supplier.findById(id).populate({
     path: "brands",
-    select: "title website thumbnail -_id",
+    select: "title website logo -_id",
   });
   return result;
 };
