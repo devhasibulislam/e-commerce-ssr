@@ -83,6 +83,12 @@ exports.displayAllUsers = async () => {
   return users;
 };
 
+// fetch all migrate users
+exports.queryUsers = async (query) => {
+  const users = await User.find(query).select("-password");
+  return users;
+};
+
 /* reset user account password */
 exports.forgotPassword = async ({ email, password }, protocol, host) => {
   const user = await findByEmail(email, true);
