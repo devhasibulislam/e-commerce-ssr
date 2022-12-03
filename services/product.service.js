@@ -12,6 +12,7 @@ exports.insertNewProduct = async (data) => {
 exports.displayAllProducts = async ({ page }) => {
   const contentLimit = process.env.CONTENT_LIMIT;
   const result = await Product.find()
+    .sort("-createdAt")
     .skip(page && (Number(page) - 1) * contentLimit)
     .limit(page && contentLimit)
     .populate([
