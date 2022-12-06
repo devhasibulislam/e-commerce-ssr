@@ -15,11 +15,13 @@ const reviewController = require("../controllers/review.controller");
 const router = express.Router();
 
 /* router method integration */
+// display all reviews and insert a review
 router
   .route("/")
   .post(reviewController.insertNewReview)
   .get(reviewController.displayAllReviews);
 
+// display, update and remove specific review
 router
   .route("/:id")
   .get(reviewController.displaySpecificReview)

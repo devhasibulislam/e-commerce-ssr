@@ -23,13 +23,13 @@ router
   .post(uploader.single("thumbnail"), imageController.cloudinaryUpload)
   .patch(uploader.single("thumbnail"), imageController.cloudinaryUpdate);
 
-// post and get banner
+// display all banners and insert a banner
 router
   .route("/")
   .get(bannerController.displayAllBanners)
   .post(bannerController.insertNewBanner);
 
-// get, update and remove specific banner
+// display, update and remove specific banner
 router
   .route("/:id")
   .get(bannerController.displaySpecificBanner)

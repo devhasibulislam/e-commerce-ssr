@@ -23,11 +23,13 @@ router
   .post(uploader.single("thumbnail"), imageController.cloudinaryUpload)
   .patch(uploader.single("thumbnail"), imageController.cloudinaryUpdate);
 
+// display all stocks and insert a stock
 router
   .route("/")
   .post(stockController.insertNewStock)
   .get(stockController.displayAllStocks);
 
+// display, update and remove specific stock
 router
   .route("/:id")
   .get(stockController.displaySpecificStock)

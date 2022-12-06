@@ -23,11 +23,13 @@ router
   .post(uploader.single("logo"), imageController.cloudinaryUpload)
   .patch(uploader.single("logo"), imageController.cloudinaryUpdate);
 
+// display all blogs and insert a blog
 router
   .route("/")
   .post(brandController.insertNewBrand)
   .get(brandController.displayAllBrands);
 
+// display, update and remove specific brand
 router
   .route("/:id")
   .get(brandController.displaySpecificBrand)

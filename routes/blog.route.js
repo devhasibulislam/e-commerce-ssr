@@ -23,13 +23,13 @@ router
   .post(uploader.single("thumbnail"), imageController.cloudinaryUpload)
   .patch(uploader.single("thumbnail"), imageController.cloudinaryUpdate);
 
-// post and get a blog
+// display all blogs and insert a blog
 router
   .route("/")
   .post(blogController.insertNewBlog)
   .get(blogController.displayAllBlogs);
 
-// get, update & delete specific blog
+// update, update & delete specific blog
 router
   .route("/:id")
   .get(blogController.displaySpecificBlogs)

@@ -25,6 +25,7 @@ router
   .post(uploader.array("thumbnails", 5), imageController.cloudinaryUpload)
   .patch(uploader.array("thumbnails", 5), imageController.cloudinaryUpdate);
 
+// display all products and insert a product
 router
   .route("/")
   .post(
@@ -34,6 +35,7 @@ router
   )
   .get(productController.displayAllProducts);
 
+// display, update and remove specific product
 router
   .route("/:id")
   .get(productController.displaySpecificProduct)

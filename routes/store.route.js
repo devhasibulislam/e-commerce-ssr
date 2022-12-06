@@ -15,11 +15,13 @@ const storeController = require("../controllers/store.controller");
 const router = express.Router();
 
 /* router method integration */
+// display all stores and insert a store
 router
   .route("/")
   .post(storeController.insertNewStore)
   .get(storeController.displayAllStore);
 
+// display, update and remove specific store
 router
   .route("/:id")
   .get(storeController.displaySpecificStore)

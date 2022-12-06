@@ -25,6 +25,7 @@ router
   .post(uploader.single("thumbnail"), imageController.cloudinaryUpload)
   .patch(uploader.single("thumbnail"), imageController.cloudinaryUpdate);
 
+// display all categories and insert a category
 router
   .route("/")
   .post(
@@ -34,6 +35,7 @@ router
   )
   .get(categoryController.displayAllCategories);
 
+// display, update and remove specific category
 router
   .route("/:id")
   .get(categoryController.displaySpecificCategory)

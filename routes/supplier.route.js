@@ -23,11 +23,13 @@ router
   .post(uploader.single("avatar"), imageController.cloudinaryUpload)
   .patch(uploader.single("avatar"), imageController.cloudinaryUpdate);
 
+// display all suppliers and insert a supplier
 router
   .route("/")
   .post(supplierController.insertNewSupplier)
   .get(supplierController.displayAllSupplier);
 
+// display, update and remove specific supplier
 router
   .route("/:id")
   .get(supplierController.displaySpecificSupplier)
