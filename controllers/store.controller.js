@@ -16,7 +16,7 @@ exports.insertNewStore = async (req, res, next) => {
     res.status(201).json({
       acknowledgement: true,
       message: "Created",
-      description: "Successfully create new store",
+      description: "New store insert successfully",
       data: result,
     });
   } catch (error) {
@@ -33,7 +33,7 @@ exports.displayAllStore = async (req, res, next) => {
       acknowledgement: true,
       message: "OK",
       count: result.length,
-      description: "Successfully fetching all store",
+      description: "Successfully fetch all stores",
       data: result,
     });
   } catch (error) {
@@ -49,7 +49,7 @@ exports.displaySpecificStore = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetching specific store",
+      description: "Successfully fetch specific store",
       data: result,
     });
   } catch (error) {
@@ -84,7 +84,7 @@ exports.removeSpecificStore = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully removed specific store",
+      description: "Successfully remove specific store",
       data: result,
     });
   } catch (error) {

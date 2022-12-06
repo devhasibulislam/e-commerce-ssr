@@ -16,7 +16,7 @@ exports.insertNewReview = async (req, res, next) => {
     res.status(201).json({
       acknowledgement: true,
       message: "Created",
-      description: "Successfully insert new review",
+      description: "New review insert successfully",
       data: result,
     });
   } catch (error) {
@@ -33,7 +33,7 @@ exports.displayAllReviews = async (req, res, next) => {
       acknowledgement: true,
       message: "OK",
       count: result.length,
-      description: "Successfully fetching all reviews",
+      description: "Successfully fetch all reviews",
       data: result,
     });
   } catch (error) {
@@ -49,7 +49,7 @@ exports.displaySpecificReview = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetching specific review",
+      description: "Successfully fetch specific review",
       data: result,
     });
   } catch (error) {
@@ -84,7 +84,7 @@ exports.removeSpecificReview = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully removed specific review",
+      description: "Successfully remove specific review",
       data: result,
     });
   } catch (error) {

@@ -16,7 +16,7 @@ exports.insertNewBrand = async (req, res, next) => {
     res.status(201).json({
       acknowledgement: true,
       message: "Created",
-      description: "Successfully created new brand",
+      description: "New brand insert successfully",
       data: result,
     });
   } catch (error) {
@@ -33,7 +33,7 @@ exports.displayAllBrands = async (req, res, next) => {
       acknowledgement: true,
       message: "OK",
       count: result.length,
-      description: "Successfully fetching all brands",
+      description: "Successfully fetch all brands",
       data: result,
     });
   } catch (error) {
@@ -49,7 +49,7 @@ exports.displaySpecificBrand = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetching specific brand",
+      description: "Successfully fetch specific brand",
       data: result,
     });
   } catch (error) {
@@ -84,7 +84,7 @@ exports.removeSpecificBrand = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully removed specific brand",
+      description: "Successfully remove specific brand",
       data: result,
     });
   } catch (error) {

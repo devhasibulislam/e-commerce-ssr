@@ -16,7 +16,7 @@ exports.insertNewBlog = async (req, res, next) => {
     res.status(201).json({
       acknowledgement: true,
       message: "Created",
-      description: "Blog insertion successful",
+      description: "New blog insert successfully",
       data: result,
     });
   } catch (error) {
@@ -32,7 +32,7 @@ exports.displayAllBlogs = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetching all blogs",
+      description: "Successfully fetch all blogs",
       count: result.length,
       data: result,
     });
@@ -49,7 +49,7 @@ exports.displaySpecificBlogs = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetching specific blog",
+      description: "Successfully fetch specific blog",
       data: result,
     });
   } catch (error) {
@@ -84,7 +84,7 @@ exports.removeSpecificBlog = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully removed specific blog",
+      description: "Successfully remove specific blog",
       data: result,
     });
   } catch (error) {

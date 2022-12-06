@@ -16,7 +16,7 @@ exports.insertNewStock = async (req, res, next) => {
     res.status(201).json({
       acknowledgement: true,
       message: "Created",
-      description: "Successfully created new stock",
+      description: "New stock insert successfully",
       data: result,
     });
   } catch (error) {
@@ -33,7 +33,7 @@ exports.displayAllStocks = async (req, res, next) => {
       acknowledgement: true,
       message: "OK",
       count: result.length,
-      description: "Successfully fetching all stocks",
+      description: "Successfully fetch all stocks",
       data: result,
     });
   } catch (error) {
@@ -49,7 +49,7 @@ exports.displaySpecificStock = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetching specific stock",
+      description: "Successfully fetch specific stock",
       data: result,
     });
   } catch (error) {
@@ -84,7 +84,7 @@ exports.removeSpecificStock = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully removed specific stock",
+      description: "Successfully remove specific stock",
       data: result,
     });
   } catch (error) {

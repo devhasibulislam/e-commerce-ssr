@@ -16,7 +16,7 @@ exports.insertNewSupplier = async (req, res, next) => {
     res.status(201).json({
       acknowledgement: true,
       message: "Created",
-      description: "Successfully created new supplier",
+      description: "New supplier insert successfully",
       data: result,
     });
   } catch (error) {
@@ -33,7 +33,7 @@ exports.displayAllSupplier = async (req, res, next) => {
       acknowledgement: true,
       message: "OK",
       count: result.length,
-      description: "Successfully fetching all supplier",
+      description: "Successfully fetch all suppliers",
       data: result,
     });
   } catch (error) {
@@ -49,7 +49,7 @@ exports.displaySpecificSupplier = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetching specific supplier",
+      description: "Successfully fetch specific supplier",
       data: result,
     });
   } catch (error) {
@@ -84,7 +84,7 @@ exports.removeSpecificSupplier = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully removed specific supplier",
+      description: "Successfully remove specific supplier",
       data: result,
     });
   } catch (error) {

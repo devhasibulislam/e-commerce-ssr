@@ -5,9 +5,8 @@
  * Date: 26/11/2022
  */
 
-const productService = require("../services/product.service");
-
 /* internal import */
+const productService = require("../services/product.service");
 
 /* insert new product */
 exports.insertNewProduct = async (req, res, next) => {
@@ -17,7 +16,7 @@ exports.insertNewProduct = async (req, res, next) => {
     res.status(201).json({
       acknowledgement: true,
       message: "Created",
-      description: "Successfully created new product",
+      description: "New product insert successfully",
       data: result,
     });
   } catch (error) {
@@ -34,7 +33,7 @@ exports.displayAllProducts = async (req, res, next) => {
       acknowledgement: true,
       message: "OK",
       count: result.length,
-      description: "Successfully fetching all products",
+      description: "Successfully fetch all products",
       data: result,
     });
   } catch (error) {
@@ -50,7 +49,7 @@ exports.displaySpecificProduct = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetching specific product",
+      description: "Successfully fetch specific product",
       data: result,
     });
   } catch (error) {
@@ -85,7 +84,7 @@ exports.removeSpecificProduct = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully removed specific product",
+      description: "Successfully remove specific product",
       data: result,
     });
   } catch (error) {

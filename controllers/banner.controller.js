@@ -16,7 +16,7 @@ exports.displayAllBanners = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetching all banners",
+      description: "Successfully fetch all banners",
       count: result.length,
       data: result,
     });
@@ -33,7 +33,7 @@ exports.insertNewBanner = async (req, res, next) => {
     res.status(201).json({
       acknowledgement: true,
       message: "Created",
-      description: "Banner insertion successful",
+      description: "New banner insert successfully",
       data: result,
     });
   } catch (error) {
@@ -49,7 +49,7 @@ exports.displaySpecificBanner = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetching specific banner",
+      description: "Successfully fetch specific banner",
       data: result,
     });
   } catch (error) {
@@ -68,7 +68,7 @@ exports.modifySpecificBanner = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully update specific blog",
+      description: "Successfully update specific banner",
       data: result,
     });
   } catch (error) {
@@ -84,7 +84,7 @@ exports.removeSpecificBanner = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully removed specific blog",
+      description: "Successfully remove specific banner",
       data: result,
     });
   } catch (error) {

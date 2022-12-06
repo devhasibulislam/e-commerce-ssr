@@ -21,7 +21,7 @@ exports.signUpAnUser = async (req, res, next) => {
     res.status(201).json({
       acknowledgement: true,
       message: "Created",
-      description: "New user registration complete",
+      description: "Registration complete successfully",
       data: {
         name: user.name,
         email: user.email,
@@ -43,14 +43,14 @@ exports.confirmSignedUpUser = async (req, res, next) => {
       return res.status(401).json({
         acknowledgement: false,
         message: "Unauthorized",
-        description: "Email provided token expired. Please, retry",
+        description: "Token expired, either Sign up or Forgot password",
       });
     }
 
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Account activated, ready to go",
+      description: "Account activate successfully",
       data: {
         name: user.name,
         email: user.email,
@@ -66,24 +66,21 @@ exports.confirmSignedUpUser = async (req, res, next) => {
 /* sign in an user */
 exports.signInAnUser = async (req, res, next) => {
   try {
-    // const { email, password } = req.body;
-    // const user = await User.findOne({ email: email });
     const result = await userService.signInAnUser(req.body);
 
     if (result.acknowledgement === false) {
       return res.status(404).json({
         acknowledgement: false,
         message: "Not Found",
-        description: "User not found or exist",
+        description: "Creentials wrong, no user found!",
       });
     }
 
-    // const isPasswordValid = user.comparePassword(password, user.password);
     if (result.invalidPassword) {
       return res.status(406).json({
         acknowledgement: false,
         message: "Not Acceptable",
-        description: "Password won't match. Please, retry correct or forgot",
+        description: "Invalid or incorrect password",
       });
     }
 
@@ -91,7 +88,8 @@ exports.signInAnUser = async (req, res, next) => {
       return res.status(401).json({
         acknowledgement: false,
         message: "Unauthorized",
-        description: "Account is not activated, verify it first",
+        description:
+          "Account is not activate, verify it or wait for admin approval",
       });
     }
 
@@ -101,7 +99,7 @@ exports.signInAnUser = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Existing user login complete",
+      description: "Successfully signed in to Canim",
       data: user,
       accessToken: token,
     });
@@ -118,7 +116,7 @@ exports.persistMeLogin = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "User founded logged in",
+      description: "User persisted throughout valid token",
       data: result,
     });
   } catch (error) {
@@ -134,7 +132,7 @@ exports.displayAllUsers = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetching all users",
+      description: "Successfully fetch all users",
       data: result,
     });
   } catch (error) {
@@ -150,7 +148,7 @@ exports.queryUsers = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetching all query users",
+      description: "Successfully fetch all query users",
       data: result,
     });
   } catch (error) {
@@ -171,14 +169,14 @@ exports.forgotPassword = async (req, res, next) => {
       return res.status(404).json({
         acknowledgement: false,
         message: "Not Found",
-        description: "User not found or exist",
+        description: "No user found, create new account",
       });
     }
 
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully reset password, ready to go",
+      description: "Password reset successfully, verify it",
       data: user,
     });
   } catch (error) {
@@ -195,14 +193,14 @@ exports.confirmPasswordReset = async (req, res, next) => {
       return res.status(401).json({
         acknowledgement: false,
         message: "Unauthorized",
-        description: "The token provided by email is expired. Please, retry",
+        description: "Token expired, either Sign up or Forgot password",
       });
     }
 
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "New password availability acceded successfully",
+      description: "New password availability accede successfully",
       data: {
         name: user.name,
         email: user.email,
@@ -222,7 +220,7 @@ exports.updateUser = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "New password availability acceded successfully",
+      description: "User credentials update successfully",
       data: result,
     });
   } catch (error) {
@@ -239,7 +237,7 @@ exports.removeAnUser = async (req, res, next) => {
       return res.status(404).json({
         acknowledgement: false,
         message: "Not Found",
-        description: "User not found or exist",
+        description: "No user found, either Sign up or Forgot password",
       });
     }
 
@@ -247,14 +245,14 @@ exports.removeAnUser = async (req, res, next) => {
       return res.status(403).json({
         acknowledgement: false,
         message: "Forbidden",
-        description: "Invalid user role not be deleted",
+        description: "Invalid user, role could not be deleted",
       });
     }
 
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully removed an user",
+      description: "Successfully remove the user",
       data: result,
     });
   } catch (error) {

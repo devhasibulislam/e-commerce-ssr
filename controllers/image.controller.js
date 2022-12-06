@@ -9,7 +9,7 @@ const cloudinaryUpload = async (req, res, next) => {
     res.status(201).json({
       acknowledgement: true,
       message: "Created",
-      description: "Uploading complete to Cloudinary",
+      description: "Insertion successful",
       data: result,
     });
   } catch (error) {
@@ -26,7 +26,7 @@ const cloudinaryUpdate = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Updating complete to Cloudinary",
+      description: "Upgradation successful",
       data: result,
     });
   } catch (error) {
