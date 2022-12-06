@@ -29,8 +29,8 @@ const categorySchema = new mongoose.Schema(
       type: String,
       required: [true, "Please, provide category description"],
       trim: true,
-      minLength: [10, "Category description must be at least 5 characters"],
-      maxLength: [250, "Category description would be at most 50 characters"],
+      minLength: [10, "Category description must be at least 10 characters"],
+      maxLength: [250, "Category description would be at most 250 characters"],
     },
 
     // for thumbnail

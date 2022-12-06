@@ -27,8 +27,8 @@ const storeSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please, provide brand description"],
       trim: true,
-      minLength: [10, "Brand description must be at least 5 characters"],
-      maxLength: [250, "Brand description would be at most 50 characters"],
+      minLength: [10, "Brand description must be at least 10 characters"],
+      maxLength: [250, "Brand description would be at most 250 characters"],
     },
 
     // for sellers

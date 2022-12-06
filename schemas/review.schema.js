@@ -35,7 +35,7 @@ const reviewSchema = new mongoose.Schema(
       required: [true, "Please, provide your review"],
       trim: true,
       minLength: [50, "Your blog name must be at least 50 characters"],
-      maxLength: [300, "Your blog name must be at least 250 characters"],
+      maxLength: [300, "Your blog name must be at least 300 characters"],
     },
 
     // for review time stamps

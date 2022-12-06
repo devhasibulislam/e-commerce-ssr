@@ -27,7 +27,7 @@ const supplierSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please, provide your email address"],
       validate: [validator.isEmail, "Provide a valid email address"],
-      unique: [true, "Email exists in DB. Please, provide another"],
+      unique: [true, "Email exists. Please, provide another"],
     },
 
     // for user avatar
